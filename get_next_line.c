@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:32:33 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/04/25 18:54:30 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:13:03 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ char	*ft_line(char *buffer)
 		line[i] = buffer[i];
 		i++;
 	}
-	if (buffer[i] && buffer[i] != '\n')
-		line[i++] = '\n';
+	line[i++] = '\n';
 	return (line);
 }
 
@@ -97,7 +96,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (0);
 	buffer = read_file(fd, buffer);
 	if (!buffer)

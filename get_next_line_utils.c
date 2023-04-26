@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 21:25:40 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/04/25 13:40:17 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:52:54 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,37 +49,6 @@ size_t	ft_strlen(const char *str)
 		str++;
 	}
 	return (count);
-}
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t		count;
-	char		*dst_dst;
-	const char	*src_src;
-
-	count = 0;
-	dst_dst = (char *)dst;
-	src_src = (const char *)src;
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	while (count < n)
-	{
-		dst_dst[count] = src_src[count];
-		count++;
-	}
-	return (dst);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	size_t	s_len;
-	char	*s2;
-
-	s_len = ft_strlen(s1) + 1;
-	s2 = malloc(s_len);
-	if (s2 == NULL)
-		return (NULL);
-	return ((char *)ft_memcpy(s2, s1, s_len));
 }
 
 char	*ft_strchr(const char *str, int c)
