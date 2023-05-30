@@ -1,0 +1,7 @@
+get_next_line should be able to read me no matter what
+even if i contain special charaxters such as & ! or even \n or \0
+and when I am empty as follows
+
+or when I am in numbers like below
+01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+Best regards to you.
