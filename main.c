@@ -17,8 +17,9 @@
 int	main(void)
 {
 	int	fd;
-	fd = open("./GET_NEXT_LINE/text.txt", O_RDONLY);
-	//printf("%d", fd);
+	fd = open("./get_next_line/text.txt", O_RDONLY);
+	// printf("%d", fd)
+	// note that it is prefarably better to compare all the tests used by paco 42 students tester
 	printf("%s", get_next_line(fd));
 	return (0);
 }
