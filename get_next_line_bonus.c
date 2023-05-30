@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 00:08:01 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/05/29 13:54:50 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/05/26 00:39:04 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/05/27 23:53:37 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -47,9 +47,9 @@ char	*get_txt(int fd, char **line)
 	if (buffer == NULL)
 		return (free(*line), NULL);
 	byte_read = read(fd, buffer, BUFFER_SIZE);
-	buffer[byte_read] = '\0';
 	if (byte_read == -1)
 		return (free(buffer), free(*line), NULL);
+	buffer[byte_read] = '\0';
 	while (byte_read > 0)
 	{
 		*line = ft_strjoin(*line, buffer);
@@ -61,10 +61,10 @@ char	*get_txt(int fd, char **line)
 		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		byte_read = read(fd, buffer, BUFFER_SIZE);
 		if (byte_read == -1)
-			return (free(buffer), buffer = NULL, free(*line), NULL);
+			return (*line);
 		buffer[byte_read] = '\0';
 	}
-	return (free(buffer), *line);
+	return (free(buffer), buffer = NULL, *line);
 }
 
 char	*get_updated(char *line)
@@ -111,15 +111,15 @@ char	*get_rslt(char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
+	static char	*line[BUFFER_MAX];
 	char		*res;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
-		return (free(line), line = NULL, NULL);
-	line = get_txt(fd, &line);
-	if (line == NULL)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	res = get_rslt(line);
-	line = get_updated(line);
+	line[fd] = get_txt(fd, &line[fd]);
+	if (line[fd] == NULL)
+		return (NULL);
+	res = get_rslt(line[fd]);
+	line[fd] = get_updated(line[fd]);
 	return (res);
 }

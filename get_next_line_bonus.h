@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 18:48:16 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/05/27 15:02:17 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/05/26 00:40:38 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/05/27 15:12:05 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
+# endif
+
+# ifndef BUFFER_MAX
+#  define BUFFER_MAX 1024
 # endif
 
 # include <stdlib.h>
